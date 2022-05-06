@@ -17,6 +17,10 @@ export const getContent = (
     return ["-", "unknown"];
   if (_ === "Path Name" && topicStats?.pathName !== undefined)
     return [topicStats?.pathName, "good"];
+  if (_ === "Crosstrack error" && topicStats?.crosstrackError === undefined)
+    return ["-", "unknown"];
+  if (_ === "Crosstrack error" && topicStats?.crosstrackError !== undefined)
+    return [topicStats?.crosstrackError, "good"];
   if (_ === "Completion fraction" && topicStats?.completionFraction === undefined)
     return ["-", "unknown"];
   if (_ === "Completion fraction" && topicStats?.completionFraction !== undefined)
@@ -27,7 +31,7 @@ export const getContent = (
     return [topicStats?.fixStatus, "good"];
   if (_ === "Latitude" && topicStats?.latitude === undefined)
     return ["-", "unknown"];
-  if (_ === "Latittude" && topicStats?.latitude !== undefined)
+  if (_ === "Latitude" && topicStats?.latitude !== undefined)
     return [topicStats?.latitude, "good"];
   if (_ === "Longitude" && topicStats?.longitude === undefined)
     return ["-", "unknown"];

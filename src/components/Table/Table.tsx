@@ -10,6 +10,7 @@ export const Table: FC<ITableProps> = ({ device }) => {
   const [canFollow, setCanFollow] = useState();
   const [headingFromNorth, setHeadingFromNorth] = useState();
   const [pathName, setPathName] = useState();
+  const [crosstrackError, setCrosstrackError] = useState();
   const [completionFraction, setCompletionFraction] = useState();
   const [fixStatus, setFixStatus] = useState();
   const [latitude, setLatitude] = useState();
@@ -73,6 +74,18 @@ export const Table: FC<ITableProps> = ({ device }) => {
           setPathName(latestState[1] as any);
         }
         if (
+          streams[stream].data[0].name === "crosstrack.err" &&
+          (latestState[1] as any) !== undefined
+        ) {
+          if (
+            shouldClearData(latestState[0], newValue.time, clearDataInSeconds)
+          ) {
+            setCrosstrackError(undefined);
+            return;
+          }
+          setCrosstrackError(latestState[1] as any);
+        }
+        if (
           streams[stream].data[0].name === "completion.fraction" &&
           (latestState[1] as any) !== undefined
         ) {
@@ -106,6 +119,7 @@ export const Table: FC<ITableProps> = ({ device }) => {
             setLatitude(undefined);
             return;
           }
+          console.log(latestState[1])
           setLatitude(latestState[1] as any);
         }
         if (
@@ -131,6 +145,7 @@ export const Table: FC<ITableProps> = ({ device }) => {
         canFollow,
         headingFromNorth,
         pathName,
+        crosstrackError,
         completionFraction,
         fixStatus,
         latitude,

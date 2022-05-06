@@ -44,5 +44,11 @@ export const moduleConfig: ModuleConfig = {
       name: "Longitude",
       state: "-", 
     },
+    {
+      stream: "crosstrack.err",
+      type: "string",
+      name: "Crosstrack error",
+      state: "-", 
+    },
   ],
 };

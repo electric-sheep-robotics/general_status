@@ -17,4 +17,5 @@ export type streamNames =
   | "gpsfix.state"
   | "latitude.rad"
   | "longitude.rad"
+  |  "crosstrack.err"
   ;

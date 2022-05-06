@@ -11,6 +11,7 @@ export interface RosDebugState {
   canFollow: string | undefined;
   headingFromNorth: string | undefined;
   pathName: string | undefined;
+  crosstrackError: string | undefined;
   completionFraction: string | undefined;
   fixStatus: string | undefined;
   latitude: string | undefined;
